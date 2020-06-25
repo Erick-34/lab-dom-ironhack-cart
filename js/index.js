@@ -1,41 +1,36 @@
-// ITERATION 1
+
 
 function updateSubtotal(product) {
   const price = product.querySelector('.price span ');
   const quantity = product.querySelector('.quantity input');
-
   const multi = quantity.value * price.innerHTML;
-
   const subTotal= product.querySelector('.subtotal span').innerHTML = multi;
-  // return product.querySelector('#total-value span').innerHTML = subTotal;
+  return subTotal;
 }
+
 function calculateAll() {
   const singleProduct = document.querySelector('.product');
-  updateSubtotal(singleProduct)
-  
-  
-  // ITERATION 2
-  // ITERATION 3
- 
+  if(singleProduct == null){
+    alert("Sem produtos no carrinho!")
+  }else{
+  const h = updateSubtotal(singleProduct);
+  const total = document.querySelector('.total-value span').innerHTML = h;
+  return total;
+  }
 }
 
-// ITERATION 4
-
-function removeProduct(event) {
-  const target = event.currentTarget;
-  console.log('The target in remove is:', target);
- 
+function removeProduct() {
+  let product = document.querySelector('.product');
+  if (product.parentNode) {
+    product.parentNode.removeChild(product);
+  }
 }
-
-// ITERATION 5
 
 function createProduct() {
- 
+  
 }
 
 window.addEventListener('load', () => {
   const calculatePricesBtn = document.getElementById('calculate');
   calculatePricesBtn.addEventListener('click', calculateAll);
-
- 
 });
